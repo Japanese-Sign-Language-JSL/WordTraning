@@ -20,6 +20,10 @@
   padding: 20px;
 }
 
+.quiz-question-img {
+  text-align: center;
+}
+
 .quiz-question {
   font-size: 32px;
   font-weight: bold;

@@ -12,6 +12,7 @@
     {
       id: "01",
       question: "あ",
+      img:"img/あvrhand.png",
       answer01: "あ",
       answer02: "い",
       answer03: "う",
@@ -19,35 +20,39 @@
     },
     {
       id: "02",
-      question: "あ",
-      answer01: "あ",
-      answer02: "い",
-      answer03: "う",
-      answer04: "え",
+      img:"img/いvrhand.png",
+      question: "い",
+      answer01: "い",
+      answer02: "う",
+      answer03: "え",
+      answer04: "お",
     },
     {
       id: "03",
-      question: "あ",
-      answer01: "あ",
-      answer02: "い",
-      answer03: "う",
-      answer04: "え",
+      img:"img/うvrhand.png",
+      question: "う",
+      answer01: "う",
+      answer02: "え",
+      answer03: "お",
+      answer04: "あ",
     },
     {
       id: "04",
-      question: "あ",
-      answer01: "あ",
-      answer02: "い",
-      answer03: "う",
-      answer04: "え",
+      img:"img/えvrhand.png",
+      question: "え",
+      answer01: "え",
+      answer02: "あ",
+      answer03: "い",
+      answer04: "う",
     },
     {
       id: "05",
-      question: "あ",
-      answer01: "あ",
-      answer02: "い",
-      answer03: "う",
-      answer04: "え",
+      img:"img/おvrhand.png",
+      question: "お",
+      answer01: "お",
+      answer02: "あ",
+      answer03: "い",
+      answer04: "う",
     },
   ];
 
@@ -66,7 +71,13 @@
 
   //現在の質問数
   let $currentNum = 0;
-
+/*
+  var 画像 = document.getElementById("exsample01"); // ア
+  画像.onload = function() {                              // イ
+      // 画像読込後の処理　　例：画像.width = 200;
+  }                                                       // ウ
+  画像.src = "img/いvrhand.png";    
+*/
   //得点
   let $pointPerCorrect = 10;
 
@@ -78,6 +89,9 @@
 
       //質問文
       this.$questionName = $target.find('.quiz-question');
+
+      //問題画像
+      this.$questionImage = $target.find('quiz-question-img');
 
       //選択肢ボタン
       this.$questionButton = $target.find('.quiz-button');
@@ -136,6 +150,7 @@
               $('.finish').addClass('is-show');
               $('.score-wrap .score').text(score);
             }, 1000);
+            
           } else {
             setTimeout(function () {
               //現在の数字の更新
@@ -148,7 +163,7 @@
               let nextQuestion = _this.searchQuestion(value);
 
               //次の質問に切り替える
-              _this.changeQuestion(nextQuestion);
+              _this.changeQuestion(nextQuestion);           
 
               //クラスを取る
               _this.$questionButton.removeClass('is-checked');
@@ -175,11 +190,17 @@
         let _this = this;
 
         //質問文の入れ替え
-        _this.$questionName.text(nextQuestion.question + 'の県庁所在地は？');
+        //_this.$questionName.text(nextQuestion.question + 'の意味は？');
+        _this.$questionName.text('この手話の意味は？');
+
+        //画像の入れ替え
+        //$('.quiz-question-img').children('img').attr('src', 'img/あvrhand.png');
+        $('.quiz-question-img').children('img').attr('src', nextQuestion.img);
 
         //質問番号を1つ増やす
         let numPlusOne = $currentNum + 1;
         _this.$questionNumber.text('質問' + numPlusOne);
+        
 
         //選択肢のテキストの入れ替え
         _this.$answer01.text(nextQuestion.answer01);
