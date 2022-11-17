@@ -71,13 +71,7 @@
 
   //現在の質問数
   let $currentNum = 0;
-/*
-  var 画像 = document.getElementById("exsample01"); // ア
-  画像.onload = function() {                              // イ
-      // 画像読込後の処理　　例：画像.width = 200;
-  }                                                       // ウ
-  画像.src = "img/いvrhand.png";    
-*/
+
   //得点
   let $pointPerCorrect = 10;
 
@@ -194,7 +188,6 @@
         _this.$questionName.text('この手話の意味は？');
 
         //画像の入れ替え
-        //$('.quiz-question-img').children('img').attr('src', 'img/あvrhand.png');
         $('.quiz-question-img').children('img').attr('src', nextQuestion.img);
 
         //質問番号を1つ増やす
